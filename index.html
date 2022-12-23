@@ -72,11 +72,8 @@
       /**
        *
        */
-      function loadRom() {
-        var url = document.getElementById('romList').selectedOptions[0].value;
+      function loadRom(url) {
         console.log(url)
-        console.log(typeof(url))
-
         var request = new XMLHttpRequest();
         request.responseType = 'arraybuffer';
 
@@ -115,9 +112,9 @@
 
         nes = new NesJs.Nes();
 
-        nes.addEventListener('fps', function(fps) {
-          document.getElementById('fps').innerText = fps.toFixed(2);
-        });
+        // nes.addEventListener('fps', function(fps) {
+        //   document.getElementById('fps').innerText = fps.toFixed(2);
+        // });
 
         nes.setRom(rom);
 
@@ -280,7 +277,7 @@
   </head>
   <body onload="init()">
     <p>
-      <select id="romList">
+      <!-- <select id="romList">
         <option value="./roms/nestest.nes">nestest</option>
         <option value="./roms/adventureisland.nes" selected>Adventure Island</option>
         <option value="./roms/adventureisland2" data-rom="./roms/adventureisland2">Adventure Island II</option>
@@ -349,15 +346,15 @@
         <option value="./roms/urbanchampion.nes">Urban Champion</option>
         <option value="./roms/wreckingcrew.nes">Wrecking Crew</option>
         <option value="./roms/zelda2.nes">Zelda II - The Adventure of Link</option>
-      </select>
-      <button id="loadROMButton" onclick="loadRom()">load rom</button><br />
-      Select rom from the list or drag and drop your own rom into this window to start.
+      </select> -->
+      <img src="https://cdn.discordapp.com/attachments/1055616265458302976/1055982097677942885/Super_Mario_Bros._3.webp" alt="" style="max-width: 250px" onclick="loadRom('./roms/supermariobros3.nes')">
+      <img src="https://cdn.discordapp.com/attachments/1055616265458302976/1055982411332206602/Castlevania_1_cover.png" alt="" style="max-width: 250px" onclick="loadRom('./roms/castlevania.nes')">
+      <!-- <button id="loadROMButton" onclick="loadRom()">load rom</button><br /> -->
     </p>
 
     <p>
       <canvas id="mainCanvas" width="256" height="240"
               style="border:1px solid black; width:512px; height:480px;"></canvas>
-      <span id="fps"></span> fps
     </p>
 
     <div>
@@ -414,7 +411,7 @@
       <textarea id="dump" cols="128" rows="16" readonly="readonly"> </textarea>
     </p>
 
-    <p>
+    <!-- <p>
       Thanks for the public domain NES roms.
     </p>
     <ul>
@@ -425,7 +422,7 @@
 
     <p>
       <a href="https://github.com/takahirox/nes-js">Source code at GitHub</a>
-    </p>
+    </p> -->
 
   </body>
 </html>
