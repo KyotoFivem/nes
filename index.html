@@ -72,8 +72,8 @@
       /**
        *
        */
-      function loadRom() {
-        var url = document.getElementById('romList').selectedOptions[0].value;
+      function loadRom(url) {
+        // var url = document.getElementById('romList').selectedOptions[0].value;
 
         var request = new XMLHttpRequest();
         request.responseType = 'arraybuffer';
@@ -281,7 +281,7 @@
       <select id="romList">
         <option value="./roms/nestest.nes">nestest</option>
         <option value="./roms/adventureisland.nes" selected>Adventure Island</option>
-        <option value="./roms/adventureisland2">Adventure Island II</option>
+        <option value="./roms/adventureisland2" data-rom="./roms/adventureisland2">Adventure Island II</option>
         <option value="./roms/adventureisland3.nes">Adventure Island III</option>
         <option value="./roms/adventuresoflolo.nes">Adventures Of Lolo</option>
         <option value="./roms/adventuresoflolo2.nes">Adventures Of Lolo II</option>
@@ -289,7 +289,7 @@
         <option value="./roms/balloonfight">Ballon Fight</option>
         <option value="./roms/baseball.nes">Baseball</option>
         <option value="./roms/batman.nes">Batman The Videogame</option>
-        <option value="./roms/blockout.nes">Blockout</option>
+        <option value="./roms/blockout.nes">Adventures Of Lolo III</option>
         <option value="./roms/bubblebobble.nes">Bubble Bobble</option>
         <option value="./roms/castlevania.nes">Castlevania</option>
         <option value="./roms/castlevania2.nes">Castlevania II - Simon's Quest</option>
@@ -348,7 +348,7 @@
         <option value="./roms/wreckingcrew.nes">Wrecking Crew</option>
         <option value="./roms/zelda2.nes">Zelda II - The Adventure of Link</option>
       </select>
-      <button id="loadROMButton" onclick="loadRom()">load rom</button><br />
+      <button id="loadROMButton" onclick="loadRom('./roms/blockout.nes')">load rom</button><br />
       Select rom from the list or drag and drop your own rom into this window to start.
     </p>
 
