@@ -73,6 +73,9 @@
        *
        */
       function loadRom(url) {
+        document.getElementById("list").style.display = "none";
+        document.getElementById("mainCanvas").style.display = "block";
+        document.getElementById("controles").style.display = "block";
         var request = new XMLHttpRequest();
         request.responseType = 'arraybuffer';
 
@@ -93,6 +96,12 @@
         // ROMloaded();
       }
 
+      function returnMain() {
+        document.getElementById("list").style.display = "block";
+        document.getElementById("mainCanvas").style.display = "none";
+        document.getElementById("controles").style.display = "none";
+      }
+
       /**
        *
        */
@@ -107,7 +116,7 @@
 
         putMessage('');
         putMessage('Rom Header info');
-        putMessage(rom.header.dump());
+        // putMessage(rom.header.dump());
 
         nes = new NesJs.Nes();
 
@@ -145,9 +154,9 @@
        *
        */
       function putMessage(str) {
-        var area = document.getElementById('dump');
-        area.firstChild.appendData(str + '\n');
-        area.scrollTop = area.scrollHeight;
+        // var area = document.getElementById('dump');
+        // area.firstChild.appendData(str + '\n');
+        // area.scrollTop = area.scrollHeight;
       }
 
       // push button handlers
@@ -275,7 +284,7 @@
     </script>
   </head>
   <body onload="init()">
-    <p>
+    <p id="list">
       <!-- <select id="romList">
         <option value="./roms/nestest.nes">nestest</option>
         <option value="./roms/adventureisland.nes" selected>Adventure Island</option>
@@ -353,10 +362,10 @@
 
     <p>
       <canvas id="mainCanvas" width="256" height="240"
-              style="border:1px solid black; width:512px; height:480px;"></canvas>
+              style="border:2px solid black; width:512px; height:480px; border-radius: 5px; display: none"></canvas>
     </p>
 
-    <div>
+    <div id="controles" style="display: none">
       <table>
         <tr>
           <td></td>
@@ -392,36 +401,13 @@
                 onclick="releasePadButton(NesJs.Joypad.BUTTONS.B)">B</button></td>
           <td><button id="pad1_0" onmousedown="pressPadButton(NesJs.Joypad.BUTTONS.A)"
                 onclick="releasePadButton(NesJs.Joypad.BUTTONS.A)">A</button></td>
+                <td>     <button id="stopButton" onclick="pushStopButton()">stop</button></td>
+                <!-- <button id="stepButton" onclick="pushStepButton()">step</button> -->
+                <td></td><button id="resumeButton" onclick="pushResumeButton()">resume</button></td>
+                <td></td><button id="resumeButton" onclick="returnMain()">return</button></td>
         </tr>
       </table>
     </div>
-
-    <p>
-      <div>
-        <button id="dumpROMButton" onclick="pushDumpROM()">dump ROM</button>
-        <button id="dumpRegButton" onclick="pushDumpReg()">dump CPU/PPU reg</button>
-        <button id="dumpRAMButton" onclick="pushDumpRAM()">dump CPU RAM</button>
-        <button id="dumpVRAMButton" onclick="pushDumpVRAM()">dump PPU VRAM</button>
-        <button id="dumpSPRRAMButton" onclick="pushDumpSPRRAM()">dump PPU SPRRAM</button>
-        <button id="stopButton" onclick="pushStopButton()">stop</button>
-        <button id="stepButton" onclick="pushStepButton()">step</button>
-        <button id="resumeButton" onclick="pushResumeButton()">resume</button>
-      </div>
-      <textarea id="dump" cols="128" rows="16" readonly="readonly"> </textarea>
-    </p>
-
-    <!-- <p>
-      Thanks for the public domain NES roms.
-    </p>
-    <ul>
-      <li><a href="http://pdroms.de/category/nintendoentertainmentsystem">http://pdroms.de/category/nintendoentertainmentsystem</a></li>
-      <li><a href="http://slydogstudios.org/index.php/1k-series/">http://slydogstudios.org/index.php/1k-series/</a></li>
-      <li><a href="http://www.mojontwins.com/juegos_mojonos/sgt-helmet-training-day-nes/">http://www.mojontwins.com/juegos_mojonos/sgt-helmet-training-day-nes/</a></li>
-    </ul>
-
-    <p>
-      <a href="https://github.com/takahirox/nes-js">Source code at GitHub</a>
-    </p> -->
 
   </body>
 </html>
