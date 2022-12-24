@@ -52,6 +52,12 @@
         // document.getElementById('resumeButton').disabled = true;
       }
 
+      function mutePage() {
+          var elems = document.querySelectorAll("video, audio");
+
+          [].forEach.call(elems, function(elem) { muteMe(elem); });
+      }
+
       /**
        *
        */
@@ -405,6 +411,7 @@
                 <!-- <button id="stepButton" onclick="pushStepButton()">step</button> -->
                 <td></td><button id="resumeButton" onclick="pushResumeButton()">resume</button></td>
                 <td></td><button id="resumeButton" onclick="returnMain()">return</button></td>
+                <td></td><button id="resumeButton" onclick="mutePage()">mute</button></td>
         </tr>
       </table>
     </div>
